@@ -1,0 +1,26 @@
+<div class="result">
+    <div class="result__box">
+        <input
+          type="text"
+          name="searchText"
+          class="result__box"
+          ng-change="$ctrl.getResults();"
+          ng-model="$ctrl.searchText"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+        }">
+        <div class="result__box" ng-if="$ctrl.showResults">
+          <ul class="">
+            <li ng-repeat="result in $ctrl.results">
+              <p class="dropdown-item" ng-click="$ctrl.selectResult(result);">
+                {{result.name}}
+              </p>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>

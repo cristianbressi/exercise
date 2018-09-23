@@ -1,0 +1,38 @@
+<div class="countries">
+  <h3 class="result__sub-title">Search Countries:</h3>
+  <autocomplete
+    on-search="$ctrl.searchCountries($event);"
+    on-select="$ctrl.addCountry($event);"
+    min-length=2>
+  </autocomplete>
+  <div class="result__box">
+    <hr/>
+    <h4 class="result__sub-title">Selected:</h3>
+    <ul class="">
+      <li ng-repeat="country in $ctrl.listedCountries">
+        <country
+          country="country"
+          on-delete="$ctrl.deleteCountry($event);">
+        </country>
+      </li>
+    </ul>
+  </div>
+  <div class="result__box">
+      <button class="submit"
+        ng-disabled="$ctrl.listedCountries.length === 0"
+        ng-click="$ctrl.submitCountries();">Submit
+      </button>
+  </div>
+  <div class="result__box" ng-if="$ctrl.showMessage">
+    <div class="result__box" ng-if="$ctrl.submissionSuccessfull">
+      <p class="msg msg_success">
+        The submission was successfull.
+      </p>
+    </div>
+    <div class="result__box" ng-if="!$ctrl.submissionSuccessfull">
+      <p class="msg msg_error">
+        There was a problem with the submission.
+      </p>
+    </div>
+  </div>
+</div>
